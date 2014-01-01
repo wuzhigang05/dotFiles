@@ -134,3 +134,6 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
+" to turn off the "No write since last change (add ! to override) " 
+set hidden
+
