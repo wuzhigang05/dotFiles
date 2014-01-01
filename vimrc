@@ -23,7 +23,10 @@ set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
-set clipboard=unnamed                                        " yank and paste with the system clipboard
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
+" set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
@@ -122,18 +125,12 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-" to turn off the "No write since last change (add ! to override) " warning
-set hidden
-
-" File ~/.vim/ftplugin/python.vim
-" " ($HOME/vimfiles/ftplugin/python.vim on Windows)
-" " Python specific settings.
- setlocal tabstop=2
- setlocal shiftwidth=2
- setlocal expandtab
-" below are the files added by self mainly some abbrevations
 ab python123  #!/usr/bin/env python2.7<CR>import sys<CR>import pdb<CR>import argparse<CR>if __name__ == '__main__':<CR>o = sys.stdout<CR>e = sys.stderr<CR>parser= argparse.ArgumentParser(description="")<CR>parser.add_argument("--file", help="")<CR>args = parser.parse_args()
 ab pycom  """<CR><CR>Parameters<CR>===========<CR>Return<CR>========<CR><CR>"""
 
 ab C123  #include<iostream><CR>using std::cin;<CR>using std::cout;<CR>using std::endl;<CR>int main(int argc, char * argv[]){}
 
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
