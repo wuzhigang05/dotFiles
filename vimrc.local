@@ -1,0 +1,71 @@
+set nocursorline " don't highlight current line
+
+" keyboard shortcuts
+inoremap jj <ESC>
+
+" highlight search
+"set hlsearch
+"nmap <leader>hl :let @/ = ""<CR>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+  if ($TERM_PROGRAM == 'iTerm.app')
+    colorscheme solarized
+  else
+    colorscheme desert
+  endif
+endif
+
+" Disambiguate ,a & ,t from the Align plugin, making them fast again.
+"
+" This section is here to prevent AlignMaps from adding a bunch of mappings
+" that interfere with the very-common ,a and ,t mappings. This will get run
+" at every startup to remove the AlignMaps for the *next* vim startup.
+"
+" If you do want the AlignMaps mappings, remove this section, remove
+" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
+function! s:RemoveConflictingAlignMaps()
+  if exists("g:loaded_AlignMapsPlugin")
+    AlignMapsClean
+  endif
+endfunction
+command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
+silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+"abbreviations 
+" to turn off the "No write since last change (add ! to override) " warning
+set hidden
+
+" below are the files added by self mainly some abbrevations
+ab python123  #!/usr/bin/env python2.7<CR>import sys<CR>import pdb<CR>import argparse<CR>if __name__ == '__main__':<CR>o = sys.stdout<CR>e = sys.stderr<CR>parser = argparse.ArgumentParser(description="")<CR>parser.add_argument("--file", help="")<CR>args = parser.parse_args()
+ab pycom """<CR><CR>Parameters<CR>===========<CR>Return<CR>==========<CR><CR>"""
+ab C123  #include<iostream><CR>using std::cin;<CR>using std::cout;<CR>using std::endl;<CR>int main(int argc, char * argv[]){}
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+" settings for vim-latex plugin
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
+to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+let g:Tex_ViewRule_pdf='open -a Preview '
+let g:Tex_MultipleCompileFormats='pdf'
+
