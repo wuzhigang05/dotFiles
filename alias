@@ -1,0 +1,18 @@
+alias k1='kill %1 '
+alias k2='kill %2 '
+alias k3='kill %3 '
+alias k4='kill %4 '
+alias k5='kill %5 '
+alias k6='kill %6 '
+
+alias ll='ls -hlt'
+
+alias gc='git clone'
+alias psa='ps -A'
+# alias for tmux
+alias tn='tmux new -s '
+alias ta='tmux a -t  '
+alias tl='tmux list-sessions '
+
+alias m='make '
+alias mc='make clean '
