@@ -26,5 +26,5 @@ done
 
 echo creating the symbolic links done 
 
-
+source ~/.bash_profile
 
