@@ -12,6 +12,10 @@ if [ -f ~/.alias ]; then
   . ~/.alias
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 #customizing the prompt
 # separte the current working directory with different color 
 #export PS1="\e[0;31m[\u@\h\e[m \e[0;32m\w\e[m]\$"
