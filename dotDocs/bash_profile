@@ -5,21 +5,12 @@ export LSCOLORS=DxfxcxdxCxegedabagacad
 #enables color for iTerm
 export TERM=xterm-color
 #sets up proper alias commands when called
-alias ls='ls -GF'
-alias gvim='mvim'
-alias ipython='ipython-2.7'
-alias gc='git clone'
-alias ll='ls -lht '
-alias psa='ps -awx '
-alias k9='kill -9 '
-#alias scala='scala-2.10'
-#alias scalac='scalac-2.10'
+#
 
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5';
-alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
-# alias for screen command
-alias sl='screen -list'
-alias sr='screen -r'
+
+if [ -f ~/.alias ]; then
+  . ~/.alias
+fi
 
 #customizing the prompt
 # separte the current working directory with different color 
